@@ -1,0 +1,45 @@
+header {
+    padding: 5px 5px 30px 5px;
+    border: 2px solid lightgray;
+    text-align: center;
+    width: 400px;
+    height: 50px;
+    /* display: flex;     */
+    margin: 5px auto;
+}
+
+input#question {
+    padding: 3px;
+    border: 2px solid lightgray;
+    width: 400px;
+    height: 50px;
+    margin: 5px auto;
+    display: flex;
+
+}
+
+.options {
+    padding: 2px;
+    border: 2px solid lightgray;
+    width: 400px;
+    height: 50px;
+    margin: 2px auto;
+    display: flex;
+
+}
+
+#riscado {
+    text-decoration: line-through;
+}
+
+
+ footer {
+    padding: 1px;
+    background-color: black;
+    color: white;
+    width: 400px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+
+}
