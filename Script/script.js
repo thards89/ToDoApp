@@ -34,3 +34,43 @@ const checkboxes = document.querySelectorAll(".todo input");
 for (let i=0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("change", toggleDone);
 }
+
+document
+.querySelector("form")
+.addEventListener("submit", function addNewTodo(event){
+    event.preventDefault();
+    console.log("hello");
+});
+
+function createTodo(title) {
+    const label = document.createElement ("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = false;
+    checkbox.addEventListener ("change", toggleDone);
+    label.appendChild(checkbox);
+
+    const labelText = document.createTextNode(" " + title);
+    label.appendChild(labelText);
+
+    const listItem = document.createElement("li");
+    listItem.className = "todo";
+    listItem.appendChild(label);
+
+    const list = document.getElementById("todolist")
+    list.appendChild(listItem);
+}
+
+document
+.querySelector("form")
+.addEventListener("submit", function addNewTodo(event){
+    event.preventDefault();
+
+    const inputField = document.querySelector("#new-todo")
+    const newTodoTitle = inputField.value;
+    createTodo(newTodoTitle);
+
+    inputField.value = null;
+
+    updateCounters();
+});
