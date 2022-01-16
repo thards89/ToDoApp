@@ -29,11 +29,14 @@ function toggleDone (event) {
     updateCounters();
 }
 
+
 const checkboxes = document.querySelectorAll(".todo input");
 
 for (let i=0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("change", toggleDone);
 }
+
+//is function to make the word crossed? why is it necessary to create i=0?
 
 document
 .querySelector("form")
@@ -43,20 +46,30 @@ document
 });
 
 function createTodo(title) {
+    // create a label
     const label = document.createElement ("label");
+    // create a checkbox
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = false;
+    // add the "change" event listener to the checkbox
     checkbox.addEventListener ("change", toggleDone);
     label.appendChild(checkbox);
 
+    // create a text node with the given title
     const labelText = document.createTextNode(" " + title);
+    //what is this title?
+    // and add the text node to the label
     label.appendChild(labelText);
-
+    
+    // create a list item
     const listItem = document.createElement("li");
     listItem.className = "todo";
+    // and add the label to it
     listItem.appendChild(label);
 
+
+     // add the list item to the todo list
     const list = document.getElementById("todolist")
     list.appendChild(listItem);
 }
@@ -70,7 +83,24 @@ document
     const newTodoTitle = inputField.value;
     createTodo(newTodoTitle);
 
+    // reset the value of the inputField to make it empty and
+    // ready to create new todos
     inputField.value = null;
 
     updateCounters();
 });
+
+function cleanUpDoneTodos () {
+    // get all the "done" items
+    const doneItems = document.querySelectorAll(".completed");
+
+    // loop through the "done" todo items
+    for(let i = 0; i < doneItems.length; i++) {
+         // and remove them from the DOM
+        doneItems[i].remove();
+    }
+
+    updateCounters();
+}
+
+document.getElementById("clean-up").addEventListener("click", cleanUpDoneTodos);
